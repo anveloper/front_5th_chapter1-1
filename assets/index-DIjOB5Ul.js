@@ -1,4 +1,4 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))l(o);new MutationObserver(o=>{for(const r of o)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&l(a)}).observe(document,{childList:!0,subtree:!0});function n(o){const r={};return o.integrity&&(r.integrity=o.integrity),o.referrerPolicy&&(r.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?r.credentials="include":o.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function l(o){if(o.ep)return;o.ep=!0;const r=n(o);fetch(o.href,r)}})();const s={MAIN:"/",LOGIN:"/login",LOGOUT:"/logout",PROFILE:"/profile",ERROR:"/error"},u={PAGE_PUSH:"page-push"},p={LOGIN_FORM:"login-form",PROFILE_FORM:"profile-form"},f=()=>({template:`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))a(s);new MutationObserver(s=>{for(const l of s)if(l.type==="childList")for(const c of l.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&a(c)}).observe(document,{childList:!0,subtree:!0});function n(s){const l={};return s.integrity&&(l.integrity=s.integrity),s.referrerPolicy&&(l.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?l.credentials="include":s.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function a(s){if(s.ep)return;s.ep=!0;const l=n(s);fetch(s.href,l)}})();const o={MAIN:"/",LOGIN:"/login",LOGOUT:"/logout",PROFILE:"/profile",ERROR:"/error"},v={PAGE_PUSH:"page-push"},u={LOGIN_FORM:"login-form",PROFILE_FORM:"profile-form"},m=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
         <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -12,7 +12,7 @@
         </a>
       </div>
     </main>
-  `}),w=()=>({template:`
+  `,x=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">항해플러스</h1>
@@ -34,33 +34,33 @@
         </div>
       </div>
     </main>
-  `}),g=({children:e})=>`
+  `,b=({children:t})=>`
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
-        ${e}
+        ${t}
       </div>
     </div>
-  `,v=()=>`
+  `,p=()=>`
     <footer class="bg-gray-200 p-4 text-center">
       <p>&copy; 2024 항해플러스. All rights reserved.</p>
     </footer>
-  `,h=()=>`
+  `,f=()=>`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
-  `,L=()=>{const e=()=>{try{return JSON.parse(localStorage.getItem("user"))||{}}catch{return{}}},t={};return{isLogon:()=>!!e().username,get:a=>a?(t==null?void 0:t[a])||void 0:t,set:a=>(Object.entries(a).forEach(([c,y])=>t[c]=y),t),sync:()=>{["user","users"].forEach(a=>{try{const c=JSON.stringify(localStorage.getItem(a));t[a]=c||null}catch{t[a]=void 0}})}}},i=globalThis.store||L();globalThis.store=i;const x=({url:e})=>{const t=l=>l===e?"text-blue-600 font-bold":"text-gray-600";return`
+  `,r={get:t=>JSON.parse(localStorage.getItem(t)),set:(t,e)=>localStorage.setItem(t,JSON.stringify(e)),remove:t=>localStorage.removeItem(t),isLogon:()=>!!r.get("user"),setUser:t=>r.set("user",t),login:t=>r.set("user",{username:t,email:"",bio:""}),logout:()=>r.remove("user"),sync:()=>{}},g=({url:t})=>{const e=a=>a===t?"text-blue-600 font-bold":"text-gray-600";return`
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-        <li><a href="/" class="${t(s.MAIN)}">홈</a></li>
-        ${i.isLogon()?`
-            <li><a href="/profile" class="${t(s.PROFILE)}">프로필</a></li>
+        <li><a href="/" class="${e(o.MAIN)}">홈</a></li>
+        ${r.isLogon()?`
+            <li><a href="/profile" class="${e(o.PROFILE)}">프로필</a></li>
             <li><a href="/logout" id="logout" class="text-gray-600">로그아웃</a></li>
           `:`
-            <li><a href="/login" id="login-link" class="${t(s.LOGIN)}">로그인</a></li>
+            <li><a href="/login" id="login-link" class="${e(o.LOGIN)}">로그인</a></li>
             `}
       </ul>
     </nav>
-  `},E=()=>(i.get("username"),{template:g({children:[h(),x({url:s.MAIN}),O(),v()].join("")})}),O=()=>`
+  `},h=()=>(r.isLogon(),b({children:[f(),g({url:o.MAIN}),y(),p()].join("")})),y=()=>`
   <main class="p-4">
     <div class="mb-4 bg-white rounded-lg shadow p-4">
       <textarea class="w-full p-2 border rounded" placeholder="무슨 생각을 하고 계신가요?"></textarea>
@@ -150,7 +150,7 @@
       </div>
     </div>
   </main>
-`,I=()=>{i.get("username");const e=i.get(),t=`
+`,w=()=>{r.isLogon();const t=r.get("user"),e=`
     <main class="p-4">
       <div class="bg-white p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -167,7 +167,7 @@
               type="text"
               id="username"
               name="username"
-              value="${(e==null?void 0:e.username)||""}"
+              value="${(t==null?void 0:t.username)||""}"
               class="w-full p-2 border rounded"
             />
           </div>
@@ -181,7 +181,7 @@
               type="email"
               id="email"
               name="email"
-              value="${(e==null?void 0:e.email)||""}"
+              value="${(t==null?void 0:t.email)||""}"
               class="w-full p-2 border rounded"
             />
           </div>
@@ -196,7 +196,7 @@
               name="bio"
               rows="4"
               class="w-full p-2 border rounded"
-            >${(e==null?void 0:e.bio)||""}</textarea>
+            >${(t==null?void 0:t.bio)||""}</textarea>
           </div>
           <button
             type="submit"
@@ -207,4 +207,4 @@
         </form>
       </div>
     </main>
-  `;return{template:g({children:[h(),x({url:s.PROFILE}),t,v()].join("")})}},b="/front_5th_chapter1-1",d="#",P=e=>{e.preventDefault();let t=e.target.getAttribute("href");t===s.LOGOUT?(localStorage.removeItem("user"),t=s.MAIN):t===s.LOGIN&&i.get("username")&&(t=s.MAIN);const n={detail:{url:t},bubbles:!0,cancelable:!0};document.dispatchEvent(new CustomEvent(u.PAGE_PUSH,n))},N=()=>{document.querySelectorAll("a").forEach(e=>{e.addEventListener("click",P)})},S={[s.PROFILE]:I,[s.LOGIN]:w,[s.MAIN]:E,[s.ERROR]:f},m=e=>{var l;e.preventDefault();let t=((l=e.detail)==null?void 0:l.url)||location.hash||s.MAIN;const n=i.isLogon();t=t.replace(d,""),!n&&t===s.PROFILE&&(t=s.LOGIN),n&&t===s.LOGIN&&(t=s.MAIN),t.includes(d)||(t=d+t),t.includes(b)&&(t=t.replace(b,"")),location.hash=t,A(t)},A=e=>{const t=e.replace(b,"").replace(d,""),n=(S[t]||f)(),l=document.querySelector("#root");l.innerHTML=n.template,N()};document.addEventListener(u.PAGE_PUSH,m);document.addEventListener("submit",e=>{if(e.preventDefault(),e.target.id===p.LOGIN_FORM){const l={username:new FormData(e.target).get("username")||"",email:"",bio:""};localStorage.setItem("user",JSON.stringify(l)),i.set(l);const r={detail:{url:s.MAIN},bubbles:!0,cancelable:!0};document.dispatchEvent(new CustomEvent(u.PAGE_PUSH,r))}else if(e.target.id===p.PROFILE_FORM){const t=new FormData(e.target),n={username:t.get("username")||"",email:t.get("email")||"",bio:t.get("bio")||""};localStorage.setItem("user",JSON.stringify(n)),i.set(n);const o={detail:{url:s.PROFILE},bubbles:!0,cancelable:!0};document.dispatchEvent(new CustomEvent(u.PAGE_PUSH,o))}});window.addEventListener("storage",i.sync());window.addEventListener("hashchange",m);window.addEventListener("popstate",m);window.addEventListener("DOMContentLoaded",m);
+  `;return b({children:[f(),g({url:o.PROFILE}),e,p()].join("")})},L={[o.MAIN]:h,[o.LOGIN]:x,[o.PROFILE]:w,[o.ERROR]:m},i=(t,e=!1)=>{history[e?"replaceState":"pushState"](null,null,t),d()},d=()=>{const t=document.querySelector("#root"),{pathname:e}=location,n=r.isLogon();if(e===o.PROFILE&&!n)return i(o.LOGIN,!0);if(e===o.LOGIN&&n)return i(o.MAIN,!0);const a=L[e]||m;t.innerHTML=a(),O()},O=()=>{const t=document.querySelector("#root");t.addEventListener("submit",e=>{if(e.preventDefault(),e.target.id===u.LOGIN_FORM){const a=new FormData(e.target).get("username")||"";r.login(a),i(o.MAIN)}else if(e.target.id===u.PROFILE_FORM){const n=new FormData(e.target),a=n.get("username")||"",s=n.get("email")||"",l=n.get("bio")||"";r.setUser({username:a,email:s,bio:l})}}),t.addEventListener("click",e=>{if(e.target.tagName==="A"){if(e.preventDefault(),e.target.pathname===o.LOGOUT){r.logout(),i(o.LOGIN);return}i(e.target.pathname)}}),t.addEventListener(v.PAGE_PUSH,e=>{e.detail.url&&i(e.detail.url)})};window.addEventListener("popstate",d);d();d();
