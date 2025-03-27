@@ -1,3 +1,4 @@
+import SwitchButton from "../components/\bswitch-button.js";
 import { CUSTOM_EVENT, ELEMENT_ID, ROUTES } from "../config";
 import ErrorPage from "../pages/error-page.js";
 import LoginPage from "../pages/login-page.js";
@@ -38,6 +39,7 @@ export const render = () => {
   const page = URL_MAP[pathname] || ErrorPage;
   root.innerHTML = page();
   setEventListener();
+  root.parentNode.appendChild(SwitchButton());
 };
 
 const setEventListener = () => {
