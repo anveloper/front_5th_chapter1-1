@@ -1,4 +1,4 @@
-(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const l of e)if(l.type==="childList")for(const i of l.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const l={};return e.integrity&&(l.integrity=e.integrity),e.referrerPolicy&&(l.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?l.credentials="include":e.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function a(e){if(e.ep)return;e.ep=!0;const l=n(e);fetch(e.href,l)}})();const r={MAIN:"/",LOGIN:"/login",LOGOUT:"/logout",PROFILE:"/profile",ERROR:"/error"},p={PAGE_PUSH:"page-push"},f={LOGIN_FORM:"login-form",PROFILE_FORM:"profile-form"},g=()=>`
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(e){if(e.ep)return;e.ep=!0;const o=n(e);fetch(e.href,o)}})();const r={MAIN:"/",LOGIN:"/login",LOGOUT:"/logout",PROFILE:"/profile",ERROR:"/error"},h={PAGE_PUSH:"page-push"},y={LOGIN_FORM:"login-form",PROFILE_FORM:"profile-form"},f="/front_5th_chapter1-1",d="index.hash.html",c="router-switch-button",g=["mt-2","bg-blue-600","text-white","px-4","py-2","rounded-full"],x="position: fixed; bottom: 12px; right: 12px;",w=()=>{const t=document.getElementById(c)||document.createElement("button");return t.id=c,t.classList.add(...g),t.style.cssText=x,t.textContent="전환",t.addEventListener("click",s=>{s.preventDefault();const n=location.href.includes(d);window.open(f+"/"+(n?"":d),"_self")}),t},L=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
         <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -12,7 +12,7 @@
         </a>
       </div>
     </main>
-  `,x=()=>`
+  `,E=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">항해플러스</h1>
@@ -34,25 +34,25 @@
         </div>
       </div>
     </main>
-  `,d=({children:t})=>`
+  `,u=({children:t})=>`
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
         ${t}
       </div>
     </div>
-  `,c=()=>`
+  `,b=()=>`
     <footer class="bg-gray-200 p-4 text-center">
       <p>&copy; 2024 항해플러스. All rights reserved.</p>
     </footer>
-  `,u=()=>`
+  `,m=()=>`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
-  `,o={get:t=>JSON.parse(localStorage.getItem(t)),set:(t,s)=>localStorage.setItem(t,JSON.stringify(s)),remove:t=>localStorage.removeItem(t),isLogon:()=>!!o.get("user"),setUser:t=>o.set("user",t),login:t=>o.set("user",{username:t,email:"",bio:""}),logout:()=>o.remove("user"),sync:()=>{}},b=({url:t})=>{const s=a=>a===t?"text-blue-600 font-bold":"text-gray-600";return`
+  `,l={get:t=>JSON.parse(localStorage.getItem(t)),set:(t,s)=>localStorage.setItem(t,JSON.stringify(s)),remove:t=>localStorage.removeItem(t),isLogon:()=>!!l.get("user"),setUser:t=>l.set("user",t),login:t=>l.set("user",{username:t,email:"",bio:""}),logout:()=>l.remove("user"),sync:()=>{}},p=({url:t})=>{const s=a=>a===t?"text-blue-600 font-bold":"text-gray-600";return`
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
         <li><a href="/" class="${s(r.MAIN)}">홈</a></li>
-        ${o.isLogon()?`
+        ${l.isLogon()?`
             <li><a href="/profile" class="${s(r.PROFILE)}">프로필</a></li>
             <li><a href="/logout" id="logout" class="text-gray-600">로그아웃</a></li>
           `:`
@@ -60,7 +60,7 @@
             `}
       </ul>
     </nav>
-  `},v=()=>(o.isLogon(),d({children:[u(),b({url:r.MAIN}),m(),c()].join("")})),m=()=>`
+  `},I=()=>(l.isLogon(),u({children:[m(),p({url:r.MAIN}),v(),b()].join("")})),v=()=>`
   <main class="p-4">
     <div class="mb-4 bg-white rounded-lg shadow p-4">
       <textarea class="w-full p-2 border rounded" placeholder="무슨 생각을 하고 계신가요?"></textarea>
@@ -150,7 +150,7 @@
       </div>
     </div>
   </main>
-`,h=()=>{o.isLogon();const t=o.get("user"),s=`
+`,O=()=>{l.isLogon();const t=l.get("user"),s=`
     <main class="p-4">
       <div class="bg-white p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -207,4 +207,4 @@
         </form>
       </div>
     </main>
-  `;return d({children:[u(),b({url:r.PROFILE}),s,c()].join("")})};export{p as C,g as E,x as L,v as M,h as P,r as R,f as a,o as s};
+  `;return u({children:[m(),p({url:r.PROFILE}),s,b()].join("")})};export{h as C,L as E,E as L,I as M,f as P,r as R,w as S,O as a,y as b,l as s};
