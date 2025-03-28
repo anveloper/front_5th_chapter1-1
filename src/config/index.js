@@ -14,3 +14,7 @@ export const ELEMENT_ID = {
   LOGIN_FORM: "login-form",
   PROFILE_FORM: "profile-form",
 };
+
+export const PREFIX = "/front_5th_chapter1-1";
+
+export const INDEX_HASH_FILE = "index.hash.html";

@@ -1,12 +1,10 @@
-import SwitchButton from "../components/\bswitch-button.js";
-import { CUSTOM_EVENT, ELEMENT_ID, ROUTES } from "../config";
+import SwitchButton from "../components/switch-button.js";
+import { CUSTOM_EVENT, ELEMENT_ID, PREFIX, ROUTES } from "../config";
 import ErrorPage from "../pages/error-page.js";
 import LoginPage from "../pages/login-page.js";
 import MainPage from "../pages/main-page.js";
 import ProfilePage from "../pages/profile-page.js";
 import store from "../store";
-
-const PREFIX = "/front_5th_chapter1-1";
 
 const URL_MAP = {
   [ROUTES.MAIN]: MainPage,
